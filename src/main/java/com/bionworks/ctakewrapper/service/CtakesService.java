@@ -59,8 +59,8 @@ public class CtakesService {
 		try {
 			this.engine.process(this.jcas);
 			Collection<Sentence> sentences = JCasUtil.select(jcas, Sentence.class);
+			
 			// Sentence from pipeline
-
 			for (Iterator<Sentence> iterator = sentences.iterator(); iterator.hasNext();) {
 				Sentence sentence = (Sentence) iterator.next();
 				System.out.println(sentence.getCoveredText());
@@ -69,8 +69,8 @@ public class CtakesService {
 				com.bionworks.ctakewrapper.Sentence _sentence = new com.bionworks.ctakewrapper.Sentence(
 						sentence.getCoveredText(), this.parser.analyzeTUI(this.parser.parseSentence(jcas, sentence)));
 				ctakeresponse.addSentences(_sentence);
-
 			}
+			
 			CAS cas = jcas.getCas();
 			jcs.serialize(cas, sw);
 			ctakeresponse.setMentions(getMentions(sw.toString(), note));
