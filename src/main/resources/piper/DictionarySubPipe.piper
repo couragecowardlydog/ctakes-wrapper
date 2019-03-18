@@ -1,0 +1,10 @@
+//  Commands and parameters to create a default dictionary lookup sub-pipeline.  This is not a full pipeline.
+
+// path to the xml file containing information for dictionary lookup configuration.
+cli LookupXml=org/apache/ctakes/dictionary/lookup/fast/snomedct_us.xml
+// umls credentials
+cli umlsUser=bionworks
+cli umlsPass=binodev@123
+
+// Default fast dictionary lookup
+add DefaultJCasTermAnnotator LookupXml=org/apache/ctakes/dictionary/lookup/fast/snomedct_us.xml
