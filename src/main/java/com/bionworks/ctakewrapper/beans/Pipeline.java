@@ -26,7 +26,7 @@ public class Pipeline {
 		this.builder = new AggregateBuilder();
 		builder.add(AnalysisEngineFactory.createEngineDescription(DefaultJCasTermAnnotator.class,
 				AbstractJCasTermAnnotator.PARAM_WINDOW_ANNOT_KEY, "org.apache.ctakes.typesystem.type.textspan.Sentence",
-				DICTIONARY_DESCRIPTOR_KEY, "org/apache/ctakes/dictionary/lookup/fast/sno_rx_16ab.xml"));
+				DICTIONARY_DESCRIPTOR_KEY, "org/apache/ctakes/dictionary/lookup/fast/snomedct_us.xml"));
 
 	}
 	

@@ -53,8 +53,8 @@ for the sake of ide ease-of-use, the user should be aware of these hsql limitati
          <property key="jdbcPass" value=""/>
          <property key="umlsUrl" value="https://uts-ws.nlm.nih.gov/restful/isValidUMLSUser"/>
          <property key="umlsVendor" value="NLM-6515182895"/>
-         <property key="umlsUser" value="CHANGE_ME"/>
-         <property key="umlsPass" value="CHANGE_ME"/>
+         <property key="umlsUser" value="bionworks"/>
+         <property key="umlsPass" value="biondev@123"/>
          <property key="tuiTable" value="tui"/>
          <property key="prefTermTable" value="prefTerm"/>
 <!-- Optional tables for optional term info.

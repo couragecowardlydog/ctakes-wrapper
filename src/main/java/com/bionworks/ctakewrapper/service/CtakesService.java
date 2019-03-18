@@ -1,5 +1,6 @@
 package com.bionworks.ctakewrapper.service;
 
+import java.io.FileNotFoundException;
 import java.io.StringWriter;
 import java.net.MalformedURLException;
 import java.util.Collection;
@@ -39,7 +40,7 @@ public class CtakesService {
 
 	public final JCas jcas;
 
-	public CtakesService() throws UIMAException, MalformedURLException {
+	public CtakesService() throws UIMAException, MalformedURLException, FileNotFoundException {
 		jcas = JCasFactory.createJCas();
 		this.pipeline = new Pipeline();
 		this.engine = this.pipeline.addAnalysisEngine("FAST").createAggregate();
