@@ -24,3 +24,8 @@ HELP.md
 /nbdist/
 /.nb-gradle/
 /build/
+
+
+
+## Node ##
+/src/main/ctakes-client/node/
