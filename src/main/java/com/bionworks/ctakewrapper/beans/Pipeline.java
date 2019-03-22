@@ -24,10 +24,10 @@ public class Pipeline {
 
 	public Pipeline() throws ResourceInitializationException, MalformedURLException {
 		this.builder = new AggregateBuilder();
-		builder.add(AnalysisEngineFactory.createEngineDescription(DefaultJCasTermAnnotator.class,
+			builder.add(AnalysisEngineFactory.createEngineDescription(DefaultJCasTermAnnotator.class,
 				AbstractJCasTermAnnotator.PARAM_WINDOW_ANNOT_KEY, "org.apache.ctakes.typesystem.type.textspan.Sentence",
 				DICTIONARY_DESCRIPTOR_KEY, "org/apache/ctakes/dictionary/lookup/fast/snomedct_us.xml"));
-
+		
 	}
 	
 	public AggregateBuilder getBuilder() {
