@@ -67,9 +67,10 @@ public class CtakesService {
 			
 			CAS cas = jcas.getCas();
 			jcs.serialize(cas, sw);
+			System.out.println(sw);
 			ctakeresponse.setProcessedYN("Y");
 			ctakeresponse.setError(null);
-			ctakeresponse.setSourceNote(note);
+			ctakeresponse.setSourceNote(sw.toString());
 		} catch (Exception e) {
 			ctakeresponse.setProcessedYN("N");
 			ctakeresponse.setError(e.getLocalizedMessage());

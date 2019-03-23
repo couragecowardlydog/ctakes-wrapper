@@ -68,12 +68,15 @@ public class Parser {
 		final int sentenceBegin = sentence.getBegin();
 		final Collection<IdentifiedAnnotation> identifiedAnnotations = JCasUtil.selectCovered(jcas,
 				IdentifiedAnnotation.class, sentence);
+		
+		
 		final Map<String, ParsedIdentifiedAnnotation> coveringAnnotationMap = new HashMap<String, ParsedIdentifiedAnnotation>();
 		/**
 		 * Looping over Identified annotation , to remove duplicates if any and to find
 		 * CUI, TUI and sematic
 		 */
 		for (final IdentifiedAnnotation annotation : identifiedAnnotations) {
+			annotation.getCAS().toString();
 			ParsedIdentifiedAnnotation _annotation = new ParsedIdentifiedAnnotation();
 			final TextSpan textSpan = new DefaultTextSpan(annotation, sentenceBegin);
 			
@@ -106,9 +109,10 @@ public class Parser {
 			UmlsConcept umlsConcept = (UmlsConcept) iterator.next();
 			final String CUI = trimTo8(umlsConcept.getCui());
 			final String TUI = umlsConcept.getTui();
+			final String codingScheme =  umlsConcept.getCodingScheme();
+			final String code = umlsConcept.getCode();
 			final String sematicName = SemanticGroup.getSemanticName(TUI);
-
-			umls.put(CUI, new ParsedUMLSConcepts(CUI, TUI, sematicName));
+			umls.put(CUI, new ParsedUMLSConcepts(CUI, TUI, sematicName,codingScheme,code));
 
 		}
 		return new ArrayList<ParsedUMLSConcepts>(umls.values());

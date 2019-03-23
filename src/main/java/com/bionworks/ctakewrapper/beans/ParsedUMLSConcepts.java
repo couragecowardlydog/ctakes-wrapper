@@ -4,6 +4,8 @@ public class ParsedUMLSConcepts {
 	String conceptUniqueIdentifier;
 	String typeUniqueIdentifier;
 	String semantiName;
+	String codingScheme;
+	String code;
 	
 	ParsedUMLSConcepts(){
 		
@@ -13,6 +15,18 @@ public class ParsedUMLSConcepts {
 		this.conceptUniqueIdentifier = concept;
 		this.typeUniqueIdentifier = type;
 		this.semantiName = sematic;
+	}
+	
+	
+
+	public ParsedUMLSConcepts(String conceptUniqueIdentifier, String typeUniqueIdentifier, String semantiName,
+			String codingScheme, String code) {
+		super();
+		this.conceptUniqueIdentifier = conceptUniqueIdentifier;
+		this.typeUniqueIdentifier = typeUniqueIdentifier;
+		this.semantiName = semantiName;
+		this.codingScheme = codingScheme;
+		this.code = code;
 	}
 
 	public String getConceptUniqueIdentifier() {
@@ -38,6 +52,27 @@ public class ParsedUMLSConcepts {
 	public void setSemantiName(String semantiName) {
 		this.semantiName = semantiName;
 	}
+
+	public String getCodingScheme() {
+		return codingScheme;
+	}
+
+	public void setCodingScheme(String codingScheme) {
+		this.codingScheme = codingScheme;
+	}
+
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+	
+	
+
+	
+	
 	
 	
 }
