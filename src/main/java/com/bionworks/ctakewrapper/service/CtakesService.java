@@ -1,7 +1,6 @@
 package com.bionworks.ctakewrapper.service;
 
 import java.io.FileNotFoundException;
-import java.io.StringWriter;
 import java.net.MalformedURLException;
 import java.util.Collection;
 import java.util.Iterator;
@@ -9,15 +8,9 @@ import java.util.Iterator;
 import org.apache.ctakes.typesystem.type.textspan.Sentence;
 import org.apache.uima.UIMAException;
 import org.apache.uima.analysis_engine.AnalysisEngine;
-import org.apache.uima.cas.CAS;
 import org.apache.uima.fit.factory.JCasFactory;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
-import org.apache.uima.json.JsonCasSerializer;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 import org.springframework.stereotype.Service;
 
 import com.bionworks.ctakewrapper.Parser;
@@ -31,13 +24,19 @@ public class CtakesService {
 	private AnalysisEngine engine;
 	private Parser parser;
 
-	public final JCas jcas;
+	public JCas jcas;
 
 	public CtakesService() throws UIMAException, MalformedURLException, FileNotFoundException {
+		jcas = null;
+		try {
 		jcas = JCasFactory.createJCas();
 		this.pipeline = new Pipeline();
 		this.engine = this.pipeline.addAnalysisEngine("FAST").createAggregate();
 		this.parser = new Parser();
+		}catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("Error"+e.getLocalizedMessage());
+		}
 
 	}
 

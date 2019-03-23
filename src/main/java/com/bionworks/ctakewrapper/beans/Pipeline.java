@@ -3,7 +3,6 @@ package com.bionworks.ctakewrapper.beans;
 import static org.apache.ctakes.dictionary.lookup2.ae.JCasTermAnnotator.DICTIONARY_DESCRIPTOR_KEY;
 
 import java.net.MalformedURLException;
-
 import org.apache.ctakes.assertion.medfacts.cleartk.ConditionalCleartkAnalysisEngine;
 import org.apache.ctakes.assertion.medfacts.cleartk.GenericCleartkAnalysisEngine;
 import org.apache.ctakes.assertion.medfacts.cleartk.HistoryCleartkAnalysisEngine;
@@ -24,9 +23,14 @@ public class Pipeline {
 
 	public Pipeline() throws ResourceInitializationException, MalformedURLException {
 		this.builder = new AggregateBuilder();
-			builder.add(AnalysisEngineFactory.createEngineDescription(DefaultJCasTermAnnotator.class,
+		try {
+			/*builder.add(AnalysisEngineFactory.createEngineDescription(DefaultJCasTermAnnotator.class,
 				AbstractJCasTermAnnotator.PARAM_WINDOW_ANNOT_KEY, "org.apache.ctakes.typesystem.type.textspan.Sentence",
-				DICTIONARY_DESCRIPTOR_KEY, "org/apache/ctakes/dictionary/lookup/fast/snomedct_us.xml"));
+				DICTIONARY_DESCRIPTOR_KEY, "org/apache/ctakes/dictionary/lookup/fast/snomedct_us.xml"));*/
+		}catch (Exception e) {
+			// TODO: handle exception
+			System.err.println("Error in adding builder");
+		}
 		
 	}
 	
