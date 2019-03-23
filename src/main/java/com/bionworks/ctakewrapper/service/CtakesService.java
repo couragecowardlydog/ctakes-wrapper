@@ -42,14 +42,9 @@ public class CtakesService {
 	}
 
 	public CTakeResponse getResponse(String note) {
-
-		StringWriter sw = new StringWriter();
-		JsonCasSerializer jcs = new JsonCasSerializer();
 		CTakeResponse ctakeresponse = new CTakeResponse();
 		this.jcas.reset();
 		this.jcas.setDocumentText(note);
-		jcs.setPrettyPrint(true);
-
 		try {
 			this.engine.process(this.jcas);
 			Collection<Sentence> sentences = JCasUtil.select(jcas, Sentence.class);
@@ -57,20 +52,15 @@ public class CtakesService {
 			// Sentence from pipeline
 			for (Iterator<Sentence> iterator = sentences.iterator(); iterator.hasNext();) {
 				Sentence sentence = (Sentence) iterator.next();
-				System.out.println(sentence.getCoveredText());
 				ctakeresponse.addAnnotations(this.parser.parseSentence(jcas, sentence));
 				// Localized sentence
 				com.bionworks.ctakewrapper.Sentence _sentence = new com.bionworks.ctakewrapper.Sentence(
 						sentence.getCoveredText(), this.parser.analyzeTUI(this.parser.parseSentence(jcas, sentence)));
 				ctakeresponse.addSentences(_sentence);
 			}
-			
-			CAS cas = jcas.getCas();
-			jcs.serialize(cas, sw);
-			System.out.println(sw);
 			ctakeresponse.setProcessedYN("Y");
 			ctakeresponse.setError(null);
-			ctakeresponse.setSourceNote(sw.toString());
+			ctakeresponse.setSourceNote(note);
 		} catch (Exception e) {
 			ctakeresponse.setProcessedYN("N");
 			ctakeresponse.setError(e.getLocalizedMessage());
